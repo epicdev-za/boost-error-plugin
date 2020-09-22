@@ -1,5 +1,5 @@
 const ErrorReporter = require("./ErrorReporter");
-import {populateErrorMessage} from '@google-cloud/error-reporting/src/populate-error-message';
+import {populateErrorMessage} from '@google-cloud/error-reporting/build/src/populate-error-message';
 
 class GCReporter extends ErrorReporter{
 
