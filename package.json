@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/epicdev-za/boost-error-plugin#readme",
   "dependencies": {
+    "boost": "github.com:epicdev-za/boost",
     "@google-cloud/error-reporting": "^2.0.0"
   }
 }

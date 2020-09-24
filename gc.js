@@ -1,27 +1,23 @@
-const ErrorReporter = require("./ErrorReporter");
-import {populateErrorMessage} from '@google-cloud/error-reporting/build/src/populate-error-message';
+const BoostPlugin = require("boost/api/plugins/BoostPlugin");
+const Reporter = require("./reporters/GCReporter");
+const {ErrorReporting} = require('@google-cloud/error-reporting');
 
-class GCReporter extends ErrorReporter{
+class GCErrorPlugin extends BoostPlugin{
 
-    report(){
-        if(process.env.NODE_ENV === "production"){
-            const {ErrorReporting} = require('@google-cloud/error-reporting');
+    constructor() {
+        super();
+        const errors = new ErrorReporting();
+        process.on('uncaughtException', (e) => {
+            console.error(e);
+            errors.report(e);
+        });
+    }
 
-            const errors = new ErrorReporting();
-
-            const errorEvent = errors.event();
-
-            errorEvent.setMessage(this.description);
-            if(this.user !== null){
-                errorEvent.setUser(this.user.uuid);
-            }
-
-            populateErrorMessage(this.error, errorEvent);
-
-            errors.report(errorEvent);
-        }
+    onExceptionCaught(error, description, uuid, currentStack) {
+        const reporter = new Reporter(error, description, uid, currentStack);
+        reporter.report();
     }
 
 }
 
-module.exports = GCReporter;
+module.exports = GCErrorPlugin;

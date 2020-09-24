@@ -1,11 +1,13 @@
-const ErrorReporter = require("./ErrorReporter");
+const BoostPlugin = require("boost/api/plugins/BoostPlugin");
+const Reporter = require("./reporters/RemoteReporter");
 
-class RemoteReporter extends ErrorReporter{
+class ErrorPlugin extends BoostPlugin{
 
-    report(){
-        throw new Error("Reporter not built. Please don't use this class");
+    onExceptionCaught(error, description, uuid, currentStack) {
+        const reporter = new Reporter(error, description, uid, currentStack);
+        reporter.report();
     }
 
 }
 
-module.exports = RemoteReporter;
+module.exports = ErrorPlugin;
