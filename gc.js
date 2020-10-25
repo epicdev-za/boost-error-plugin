@@ -1,4 +1,4 @@
-const BoostPlugin = require("boost/api/plugins/BoostPlugin");
+const BoostPlugin = require("../boost/api/plugins/BoostPlugin");
 const Reporter = require("./reporters/GCReporter");
 const {ErrorReporting} = require('@google-cloud/error-reporting');
 
