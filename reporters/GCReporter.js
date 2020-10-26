@@ -4,7 +4,7 @@ const {populateErrorMessage} = require('@google-cloud/error-reporting/build/src/
 class GCReporter extends ErrorReporter{
 
     report(){
-        if(process.env.NODE_ENV === "production"){
+        if(process.env.NODE_ENV === "production" && this.status === 500){
             const {ErrorReporting} = require('@google-cloud/error-reporting');
 
             const errors = new ErrorReporting();

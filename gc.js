@@ -13,8 +13,8 @@ class GCErrorPlugin extends BoostPlugin{
         });
     }
 
-    onExceptionCaught(error, description, uuid, currentStack) {
-        const reporter = new Reporter(error, description, uuid, currentStack);
+    onExceptionCaught(error, status, description, uuid, currentStack) {
+        const reporter = new Reporter(error, status, description, uuid, currentStack);
         reporter.report();
     }
 

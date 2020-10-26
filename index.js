@@ -3,8 +3,8 @@ const Reporter = require("./reporters/RemoteReporter");
 
 class ErrorPlugin extends BoostPlugin{
 
-    onExceptionCaught(error, description, uuid, currentStack) {
-        const reporter = new Reporter(error, description, uid, currentStack);
+    onExceptionCaught(error, status, description, uuid, currentStack) {
+        const reporter = new Reporter(error, status, description, uid, currentStack);
         reporter.report();
     }
 
