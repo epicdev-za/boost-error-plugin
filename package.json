@@ -1,5 +1,5 @@
 {
-  "name": "boost-error-plugin",
+  "name": "@epicdev/boost-error-plugin",
   "version": "1.0.0",
   "description": "Error Reporting Plugin for Boost",
   "main": "index.js",
@@ -18,6 +18,6 @@
   "homepage": "https://github.com/epicdev-za/boost-error-plugin#readme",
   "dependencies": {
     "@google-cloud/error-reporting": "^2.0.0",
-    "boost": "github:epicdev-za/boost"
+    "@epicdev/boost": "^1.2.2"
   }
 }
